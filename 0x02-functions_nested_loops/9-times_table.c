@@ -30,21 +30,10 @@ void times_table(void)
 		else
 		{
 			_putchar(result / 10 + '0');
-			_putchar(result % 10 + '0');				}
+			_putchar(result % 10 + '0');
+		}
 			_putchar('\n');
 			n++;
 	}
-
 }
 
-
-
-Footer
-
-© 2022 GitHub, Inc.
-
-Footer navigation
-
-Terms
-
-Privacy
