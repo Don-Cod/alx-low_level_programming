@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 /**
- * main - Entry point
+ * main - A program that prints a string on the standard output
  * Return: Always 0 (Success)
  **/
 int main(void)
