@@ -9,6 +9,6 @@
 
 int main(void)
 {
-	more_numbers(void);
+	 more_numbers();
 	return (0);
 }
