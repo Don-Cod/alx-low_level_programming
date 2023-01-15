@@ -2,12 +2,21 @@
 #include <stdio.h>
 
 /**
- * main - Entry point
+ * _puts - function that prints a string,
+ * followed by a new line, to stdout.
+ * @str: sting to print
  *
- * Return: Always 0 (Success)
+ * Return: void
  **/
 void _puts(char *str)
 {
-	puts("\"Programming is like building a multilingual puzzle");
-	return (0);
+	int counter;
+
+	counter = 0;
+	while (*(str + counter) != '\0')
+	{
+		_putchar(str[counter]);
+		counter++;
+	}
+	_putchar('\n');
 }
