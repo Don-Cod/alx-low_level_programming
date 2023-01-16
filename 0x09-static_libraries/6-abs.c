@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
-char *_strcpy(char *dest, char *src)
+int _abs(int n)
 {
-	return strcpy(dest, src);
+	return abs(n);
 }

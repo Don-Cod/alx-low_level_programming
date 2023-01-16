@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
-char *_strcpy(char *dest, char *src)
+unsigned int _strspn(char *s, char *accept)
 {
-	return strcpy(dest, src);
+	return strspn(s, accept);
 }
