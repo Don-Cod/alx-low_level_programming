@@ -12,7 +12,7 @@ int main(void)
 {
 	list_t *head;
 	list_t *new;
-	lists_t hello = {"world", 5, NULL};
+	list_t hello = {"world", 5, NULL};
 	size_t n;
 
 	head = &hello;
