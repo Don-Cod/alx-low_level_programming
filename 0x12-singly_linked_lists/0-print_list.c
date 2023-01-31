@@ -1,12 +1,14 @@
+#include <stdlib.h>
+#include <string.h>
 #include <stdio.h>
 #include "lists.h"
 
 /**
- * print_list - prints all the elements of a linked list
- * @h: pointer tp the list_t list to print
- *
- * Return: the number of nodes printed
- */
+ * print_list - check the code for Holberton School students.
+ * @h: name of the list
+ * Return: the number of nodes.
+ **/
+
 size_t print_list(const list_t *h)
 {
 	int count = 0;
@@ -23,6 +25,6 @@ size_t print_list(const list_t *h)
 		}
 		count++;
 		h = h->next;
-	}
-	return (s);
+									}
+	return (count);
 }
