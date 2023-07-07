@@ -1,44 +1,74 @@
 #include "main.h"
+#include <string.h>
 
 /**
- * print_times_table - prints the times table of the input,
- * starting with 0.
- * @n: The value of the times table to be printed.
- **/
+ * panctuate - format the output
+ * @n: number of spaces
+ */
+
+void panctuate(int n)
+{
+	int panct;
+
+	_putchar(',');
+	for (panct = 0; panct < n; panct++)
+	{
+		_putchar(' ');
+	}
+}
+
+/**
+ * print_numbers - print values using _putchar
+ * @k: integer k
+ * @mod: check wether to append control x-ters
+ */
+
+void print_numbers(int k, int mod)
+{
+	if (k < 10)
+	{
+		_putchar(k + '0');
+		if (mod > 0)
+			panctuate(mod);
+	}
+	else if (k < 100)
+	{
+		_putchar((k / 10) + '0');
+		_putchar((k % 10) + '0');
+		if (mod > 0)
+			panctuate(mod);
+	}
+	else
+	{
+		_putchar((k / 100) + '0');
+		_putchar(((k % 100) / 10) + '0');
+		_putchar((k % 10) + '0');
+		if (mod > 0)
+			panctuate(mod);
+	}
+}
+
+/**
+ * print_times_table - print the n x i table
+ * @n: integer n
+ */
 void print_times_table(int n)
 {
-	int num, mult, prod;
+	int left, right, product, mod, postprod;
 
-	if (n >= 0 && n <= 15)
+	if (n > 15 || n < 0)
+		return;
+
+	for (left = 0; left <= n; left++)
 	{
-		for (num = 0; num <= n; num++)
+		for (right = 0; right <= n; right++)
 		{
-			_putchar('0');
+			product = left * right;
+			postprod = (left * (right + 1));
 
-			for (mult = 1; mult <= n; mult++)
-			{
-				_putchar(',');
-				_putchar(' ');
-
-				prod = num * mult;
-
-				if (prod <= 99)
-					_putchar(' ');
-				if (prod <= 9)
-					_putchar(' ');
-
-				if (prod >= 100)
-				{
-					_putchar((prod / 100) + '0');
-					_putchar(((prod / 10)) % 10 + '0');
-				}
-				else if (prod <= 99 && prod >= 10)
-				{
-					_putchar((prod / 10) + '0');
-				}
-				_putchar((prod % 10) + '0');
-			}
-			_putchar('\n');
+			mod = right == n ? -1 : postprod >= 100 ? 1 : postprod >= 10 ? 2 : 3;
+			print_numbers(product, mod);
 		}
+		_putchar('\n');
 	}
 }

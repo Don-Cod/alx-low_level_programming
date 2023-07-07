@@ -1,51 +1,47 @@
 #include <stdio.h>
+#define BILLION 1000000000
 
 /**
- * main - Prints the first 98 Fibonacci numbers, starting with
- * 1 and 2, separated by a comma followed by a space.
+ * main - Entry point
  *
- * Return: Always 0.
- **/
-
+ * Return: Always 0 (Success)
+ */
 int main(void)
 {
-	int count;
-	unsigned long fib1 = 0, fib2 = 1, sum;
-	unsigned long fib1_half1, fib1_half2, fib2_half1, fib2_half2;
-	unsigned long half1, half2;
+	int i, overflow;
+	unsigned long int next;
+	unsigned long int prev = 1;
+	unsigned long int current = 1;
+	long current_head, current_tail, next_head, next_tail;
+	long sum_head, sum_tail;
 
-	for (count = 0; count < 92; count++)
+	printf("1");
+	for (i = 2; i <= 92; i++)
 	{
-		sum = fib1 + fib2;
-		printf("%lu, ", sum);
-
-		fib1 = fib2;
-		fib2 = sum;
+		next = current + prev;
+		printf(", %lu", next);
+		prev = current;
+		current = next;
 	}
-		fib1_half1 = fib1 / 10000000000;
-		fib2_half1 = fib2 / 10000000000;
-		fib1_half2 = fib1 % 10000000000;
-		fib2_half2 = fib2 % 10000000000;
 
-		for (count = 93; count < 99; count++)
-		{
-			half1 = fib1_half1 + fib2_half1;
-			half2 = fib1_half2 + fib2_half2;
-			if (fib1_half2 + fib2_half2 > 9999999999)
-			{
-				half1 += 1;
-				half2 %= 10000000000;
-			}
+	current_head = prev / BILLION;
+	current_tail = prev % BILLION;
+	next_head = current / BILLION;
+	next_tail = current % BILLION;
 
-			printf("%lu%lu", half1, half2);
-			if (count != 98)
-				printf(", ");
+	for (; i < 99; i++)
+	{
+		overflow = (current_tail + next_tail) / BILLION;
+		sum_tail = (current_tail + next_tail) - (BILLION * overflow);
+		sum_head = (current_head + next_head) + overflow;
 
-			fib1_half1 = fib2_half1;
-			fib1_half2 = fib2_half2;
-			fib2_half1 = half1;
-			fib2_half2 = half2;
-		}
-		printf("\n");
-		return (0);
+		printf(", %lu%lu", sum_head, sum_tail);
+
+		current_head = next_head;
+		current_tail = next_tail;
+		next_head = sum_head;
+		next_tail = sum_tail;
+	}
+	printf("\n");
+	return (0);
 }

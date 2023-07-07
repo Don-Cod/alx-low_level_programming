@@ -2,37 +2,24 @@
 #include "main.h"
 
 /**
- * print_to_98 - print order number from n to 98
- * @n: number to use
- **/
+ * print_to_98 - print from n to 98
+ * @n: integer n
+ */
 
 void print_to_98(int n)
 {
-	int val;
+	int i;
 
-	val = n;
-	if ((val > 98) || (val == 98))
+	if (n > 98)
 	{
-		while (val >= 98)
-		{
-			if (val == 98)
-				printf("%d", val);
-else
-				printf("%d, ", val);
-			val--;
-		}
+		for (i = n; i > 98; i--)
+			printf("%d, ", i);
 	}
-	else if ((val < 98) || (val == 98))
+	else
 	{
-		while (val <= 98)
-		{
-			if (val == 98)
-				printf("%d", val);
-			else
-				printf("%d, ", val);
+		for (i = n; i < 98; i++)
+			printf("%d, ", i);
+	}
 
-			val++;
-		}
-	}
-	putchar('\n');
+	printf("98\n");
 }
