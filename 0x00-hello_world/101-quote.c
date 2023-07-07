@@ -1,15 +1,16 @@
 #include <stdio.h>
-#include <unistd.h>
+#include <string.h>
 
 /**
- * main - A c program that prints a line to the standard error
- * Return: 1 (Success)
- **/
+ * main - Entry point
+ *
+ * Return: Always 0 (Success)
+ */
 int main(void)
 {
-	write(2,
-		"and that piece of art is useful\" - Dora Korpar, 2015-10-19\n",
-		59);
-
+	char *str = "and that piece of art is useful\" - Dora Korpar, 2015-10-19\n";
+	size_t len = strlen(str);
+	/* Starting main */
+	fwrite(str, len, 1, stderr);
 	return (1);
 }
